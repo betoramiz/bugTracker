@@ -1,0 +1,18 @@
+﻿<div class="container">
+    <div style="padding-top: 26px">
+        <h3>Assigned to me</h3><span><strong>Order by: </strong> <a href="#">Project</a> | <a href="#">Priority</a> | <a href="">Status</a></span>
+        <div class="list-group">
+            <a href="#" class="list-group-item" ng-repeat="bug in bugList">
+                <header>
+                    <span class="h3">#{{bug.id}} {{bug.name}}</span>
+                    <span style="padding-left:10px"><strong>{{bug.status.name}}</strong></span>
+                </header><br />
+                <div>{{bug.description}}</div><br />
+                <footer>
+                    Dead Line: {{date(bug.deadLine)}}<br />
+                    <h4><span class="label label-primary">{{bug.prioritis.name}}</span></h4>
+                </footer>
+            </a>
+        </div>
+    </div>
+</div>

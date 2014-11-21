@@ -1,0 +1,17 @@
+﻿@model DataLayer.Role
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+<h4>Add Role</h4>
+
+@using (@Html.BeginForm())
+{
+    <div class="form-group">
+        <label>Name:</label>
+        @Html.TextBoxFor(model => model.name, new { @class = "form-control" })        
+    </div>
+    <button type="submit" class="btn btn-success">Add</button>
+    @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-default"})
+}

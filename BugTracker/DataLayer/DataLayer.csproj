@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9E51676F-2418-4C76-8B0A-F64692B98527}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DataLayer</RootNamespace>
+    <AssemblyName>DataLayer</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Bug.cs" />
+    <Compile Include="DataLayerContext.cs" />
+    <Compile Include="Message.cs" />
+    <Compile Include="Migrations\201410301858232_InitialCreate.cs" />
+    <Compile Include="Migrations\201410301858232_InitialCreate.Designer.cs">
+      <DependentUpon>201410301858232_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201410301939569_addedPublicProperties.cs" />
+    <Compile Include="Migrations\201410301939569_addedPublicProperties.Designer.cs">
+      <DependentUpon>201410301939569_addedPublicProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411011742057_addedPriority.cs" />
+    <Compile Include="Migrations\201411011742057_addedPriority.Designer.cs">
+      <DependentUpon>201411011742057_addedPriority.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411022209455_AddedpriorityTable.cs" />
+    <Compile Include="Migrations\201411022209455_AddedpriorityTable.Designer.cs">
+      <DependentUpon>201411022209455_AddedpriorityTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411150358038_usersAddRole.cs" />
+    <Compile Include="Migrations\201411150358038_usersAddRole.Designer.cs">
+      <DependentUpon>201411150358038_usersAddRole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411160327093_foreignKeyintoBug.cs" />
+    <Compile Include="Migrations\201411160327093_foreignKeyintoBug.Designer.cs">
+      <DependentUpon>201411160327093_foreignKeyintoBug.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411170054216_addeddeadLine.cs" />
+    <Compile Include="Migrations\201411170054216_addeddeadLine.Designer.cs">
+      <DependentUpon>201411170054216_addeddeadLine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Priority.cs" />
+    <Compile Include="Project.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Role.cs" />
+    <Compile Include="Status.cs" />
+    <Compile Include="User.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201410301858232_InitialCreate.resx">
+      <DependentUpon>201410301858232_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201410301939569_addedPublicProperties.resx">
+      <DependentUpon>201410301939569_addedPublicProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411011742057_addedPriority.resx">
+      <DependentUpon>201411011742057_addedPriority.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411022209455_AddedpriorityTable.resx">
+      <DependentUpon>201411022209455_AddedpriorityTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411150358038_usersAddRole.resx">
+      <DependentUpon>201411150358038_usersAddRole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411160327093_foreignKeyintoBug.resx">
+      <DependentUpon>201411160327093_foreignKeyintoBug.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411170054216_addeddeadLine.resx">
+      <DependentUpon>201411170054216_addeddeadLine.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

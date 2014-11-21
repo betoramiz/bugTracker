@@ -1,0 +1,55 @@
+﻿@model AdminBugTracker.ViewModels.BugViewModel
+
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+<h3>Add</h3>
+
+@if (ViewBag.errorMessage == "" || ViewBag.errorMessage == null)
+{
+    using (Html.BeginForm())
+    {
+        @Html.ValidationSummary()
+    
+        <div class="form-group">
+            <label>Name</label>
+            @Html.TextBoxFor(m => m.name, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label>Description</label>
+            @Html.TextAreaFor(m => m.description, new { @class = "form-control", rows = "12" })
+        </div>
+        <div class="form-group">
+            <label>Status</label>
+             @Html.DropDownListFor(m => m.statusId, new SelectList(Model.statusList,"id", "name", Model.statusList.FirstOrDefault().id), new { @class = "form-control"})
+        </div>
+        <div class="form-group">
+            <label>Project</label>
+            @Html.DropDownListFor(m => m.projectId, new SelectList(Model.projectList, "id", "name"), new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label>User</label>
+            @Html.DropDownListFor(m => m.useId, new SelectList(Model.userList, "id", "fullName"), new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label>Priority</label>
+            @Html.DropDownListFor(m => m.priorityId, new SelectList(Model.priorityList, "id", "name"), new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label>Dead Line</label>
+            @Html.TextBoxFor(m => m.deadLine, new { @class = "form-control", id="datePicker" })
+        </div>
+        @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-default" })
+        <button type="submit" class="btn btn-success">Add</button>
+    }
+}
+else
+{
+    <p class="h6">ViewBag.errorMessage</p>
+}
+
+<script type="text/javascript" src="~/Scripts/jquery-ui-1.11.2.min.js"></script>
+<link rel="stylesheet" href="~/Content/jquery-ui.min.css"/>
+<script type="text/javascript" src="~/jsScripts/datePicker.js"></script>

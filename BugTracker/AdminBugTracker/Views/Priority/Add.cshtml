@@ -1,0 +1,28 @@
+﻿@model DataLayer.Priority
+
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+<h3>Add</h3>
+
+@if (ViewBag.errorMessage != "")
+{
+    using (Html.BeginForm())
+    {
+        <div class="form-group">
+            <label>Name</label>
+            @Html.TextBoxFor(m => m.name, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label>Description</label>
+            @Html.TextBoxFor(m => m.desciption, new { @class = "form-control" })
+        </div>
+        @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-default" })
+        <button type="submit" class="btn btn-success">Add</button>
+    }
+}
+else{
+    <p class="h6">ViewBag.errorMessage</p>
+}

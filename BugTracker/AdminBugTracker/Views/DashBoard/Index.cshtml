@@ -1,0 +1,122 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+<!--<div class="row placeholders">
+    <div class="col-xs-6 col-sm-3 placeholder">
+        <img src="http://placehold.it/200x200/E411CF/000000" class="img-responsive" alt="Generic placeholder thumbnail">
+        <h4>Label</h4>
+        <span class="text-muted">Something else</span>
+    </div>
+    <div class="col-xs-6 col-sm-3 placeholder">
+        <img src="http://placehold.it/200x200/E51111/000000" class="img-responsive" alt="Generic placeholder thumbnail">
+        <h4>Label</h4>
+        <span class="text-muted">Something else</span>
+    </div>
+    <div class="col-xs-6 col-sm-3 placeholder">
+        <img src="http://placehold.it/200x200/2A11E5/000000" class="img-responsive" alt="Generic placeholder thumbnail">
+        <h4>Label</h4>
+        <span class="text-muted">Something else</span>
+    </div>
+    <div class="col-xs-6 col-sm-3 placeholder">
+        <img src="http://placehold.it/200x200/11DEE5/000000" class="img-responsive" alt="Generic placeholder thumbnail">
+        <h4>Label</h4>
+        <span class="text-muted">Something else</span>
+    </div>
+</div>-->
+
+<h3 class="sub-header">Bug Status</h3>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12 table-responsive borderSection">
+            <!--seccion para bugs en curso (azul)-->
+            <header class="tableTitle">On course</header>
+            <table class="table tableSectionFont">
+                <thead>
+                    <tr>
+                        <td>issue No</td>
+                        <td>Bug</td>
+                        <td>Dead Line</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{var bugs = from x in ViewBag.bugs as IEnumerable<DataLayer.Bug> where x.statusId.Equals(8) select x;}
+                    @if (bugs.Count() > 0)
+                    {
+                        foreach (var b in bugs)
+                        {
+                            <tr>
+                                <td>@b.id</td>
+                                <td>@b.name</td>
+                                <td>@b.deadLine.ToString("d MMM, yy")</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="2">There is no Bugs on course</td>
+                        </tr>
+                    }
+                    
+                </tbody>
+            </table>
+        </div>
+        <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12 table-responsive borderSection">
+            <!--seccion para bugs terminadas (verde). Aprobar que este correcta-->
+            <header class="tableTitle">Finished</header>
+            <table class="table tableSectionFont">
+                <thead>
+                    <tr>
+                        <td>issue No</td>
+                        <td>Bug</td>
+                        <td>Dead Line</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{var bugsFinished = from x in ViewBag.bugs as IEnumerable<DataLayer.Bug> where x.statusId.Equals(9) select x;}
+                    @foreach (var b in bugsFinished)
+                    {
+                        <tr>
+                            <td>@b.id</td>
+                            <td>@b.name</td>
+                            <td>@b.deadLine.ToString("d MMM, yy")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12 table-responsive borderSection">
+            <!--seccion para bugs expiradas (rojo)-->
+            <header class="tableTitle">Expired Date</header>
+            <table class="table tableSectionFont">
+                <thead>
+                    <tr>
+                        <td>issue No</td>
+                        <td>Bug</td>
+                        <td>Dead Line</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{var bugsDeadLine = from x in ViewBag.bugs as IEnumerable<DataLayer.Bug> where x.deadLine <= DateTime.Today && x.statusId != 9 select x;}
+                    @foreach (var b in bugsDeadLine)
+                    {
+                        <tr>
+                            <td>@b.id</td>
+                            <td>@b.name</td>
+                            <td>@b.deadLine.ToString("d MMM, yy")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<h3 class="sub-header">Estadistics</h3>
+<div class="container-fluid">
+    <div class="row">
+
+    </div>
+</div>

@@ -1,0 +1,72 @@
+﻿@model IEnumerable<DataLayer.Bug>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+<h4>Index</h4>
+
+@Html.ActionLink("New Bug", "Add", null, new { @class = "btn btn-primary" })
+
+@if (Model != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>Name</td>
+                <td>Description</td>
+                <td>Asigned</td>
+                <td>Project</td>
+                <td>Status</td>
+                <td>Priority</td>
+                <td>Dead Line</td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var bug in Model)
+            {
+                <tr>
+                    <td>@bug.id</td>
+                    <td>@bug.name</td>
+                    <td>@bug.description</td>
+                    <td>@bug.users.fullName</td>
+                    <td>@bug.project.name</td>
+                    <td>@bug.status.name</td>
+                    <td>@bug.prioritis.name</td>
+                    <td>@bug.deadLine.ToString("d MMM yyyy")</td>
+                    <td class="clickableelem">
+                        <a href="" class="glyphicon glyphicon-remove" data-toggle="modal" data-target="#deleteModal" data-bind="click: setBugId.bind($data, @bug.id)"></a>
+                        <a href="@Url.Action("Update", new { id = @bug.id })" class="glyphicon glyphicon-pencil"></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p class="h6">@ViewBag.errorMessage</p>
+}
+
+
+<!--
+    Modal for delete Method
+-->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                Are you sure you want to <strong>Delete</strong> this Bug?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" data-bind="click: deleteBug">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../jsScripts/BugVM.js" type="text/javascript"></script>
